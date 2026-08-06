@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/brand-ds-019e0666-6ec9-7b9c-acd9-c30b17f28dc3/colors_and_type.css">
+<script src="_ds/brand-ds-019e0666-6ec9-7b9c-acd9-c30b17f28dc3/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#dcd8d1; }
+  a { color:#B72A06; text-decoration:none; }
+  a:hover { color:#EA4F05; text-decoration:underline; }
+</style>
+</helmet>
+
+<section style="font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;padding:56px 64px 80px;box-sizing:border-box;">
+
+  <div style="max-width:900px;margin-bottom:8px;">
+    <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#B72A06;font-weight:600;">Keenai Studio · Interactive prototype</div>
+    <div style="margin-top:12px;font-size:34px;line-height:1.08;letter-spacing:-0.03em;font-weight:600;color:#1a0d05;">Three layout explorations for the graphic generator.</div>
+    <div style="margin-top:12px;font-size:15px;line-height:1.5;color:rgba(26,13,5,0.68);max-width:680px;">Same tool, same on-brand canvas output — three ways to arrange the workspace. <a href="#1a">1a</a> three-panel editor · <a href="#1b">1b</a> editorial single-sidebar · <a href="#1c">1c</a> canvas-forward dock.</div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:72px;margin-top:48px;">
+
+    <!-- ========================= OPTION 1A ========================= -->
+    <div id="1a" style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;align-items:baseline;gap:12px;">
+        <span style="display:inline-block;background:#011526;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.04em;padding:6px 12px;">1A</span>
+        <span style="font-size:15px;font-weight:600;color:#1a0d05;">Three-panel editor</span>
+        <span style="font-size:13px;color:rgba(26,13,5,0.55);">Tools · Canvas · Content — dark chrome</span>
+      </div>
+
+      <div style="width:1360px;height:860px;background:#011526;border:1px solid rgba(0,0,0,0.25);box-shadow:0 30px 80px -40px rgba(1,21,38,0.6);display:flex;flex-direction:column;overflow:hidden;color:#fff;">
+        <!-- Top bar -->
+        <div style="height:54px;flex:0 0 54px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.10);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <img src="assets/keenai-monogram-white.svg" style="width:20px;height:20px;display:block;">
+            <span style="font-size:14px;font-weight:600;letter-spacing:-0.01em;">Keenai Studio</span>
+            <span style="font-size:13px;color:rgba(255,255,255,0.4);">Untitled — Instagram 1080×1080</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:rgba(255,255,255,0.6);padding:9px 14px;border:1px solid rgba(255,255,255,0.20);">Preview</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#011526;background:#EA4F05;padding:10px 16px;">Export PNG</div>
+          </div>
+        </div>
+        <!-- Body -->
+        <div style="flex:1;display:flex;min-height:0;">
+          <!-- Left rail -->
+          <div style="width:250px;flex:0 0 250px;border-right:1px solid rgba(255,255,255,0.10);padding:22px 18px;box-sizing:border-box;overflow:auto;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Canvas size</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+              <div style="font-size:12px;font-weight:600;color:#011526;background:#EA4F05;padding:8px 12px;">Instagram</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);padding:8px 12px;border:1px solid rgba(255,255,255,0.16);">Stories</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);padding:8px 12px;border:1px solid rgba(255,255,255,0.16);">LinkedIn</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);padding:8px 12px;border:1px solid rgba(255,255,255,0.16);">A4</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);padding:8px 12px;border:1px solid rgba(255,255,255,0.16);">A3</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);padding:8px 12px;border:1px solid rgba(255,255,255,0.16);">Letter</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);padding:8px 12px;border:1px solid rgba(255,255,255,0.16);">A5</div>
+            </div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:32px;">Background</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;">
+              <div style="aspect-ratio:1;background:#000;border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:#011526;outline:2px solid #EA4F05;outline-offset:-1px;border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:#FFFBF9;border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:#eef2f5;border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:#ede8e0;border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#430D17,#EA4F05 60%,#ffb07a);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#fff 60%,#ffd4b8);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:radial-gradient(circle at 30% 30%,#c83d04,#1a0d05 70%);border:1px solid rgba(255,255,255,0.16);"></div>
+            </div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:32px;">Photo textures</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;">
+              <div style="aspect-ratio:1;background:radial-gradient(circle at 70% 20%,rgba(234,79,5,0.35),#0a0603 65%);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:linear-gradient(115deg,#1a0d05,#4a1a08 55%,#160a03);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:radial-gradient(ellipse at 40% 60%,rgba(200,61,4,0.5),#120802 70%);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:linear-gradient(160deg,#241009,#0d0502);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:radial-gradient(circle at 50% 80%,rgba(255,128,64,0.4),#0a0603 68%);border:1px solid rgba(255,255,255,0.16);"></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#2a0f06,#120603);border:1px solid rgba(255,255,255,0.16);"></div>
+            </div>
+          </div>
+
+          <!-- Center stage -->
+          <div style="flex:1;background:#020c17;display:flex;flex-direction:column;min-width:0;">
+            <div style="height:46px;flex:0 0 46px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="display:flex;border:1px solid rgba(255,255,255,0.16);">
+                <div style="font-size:12px;font-weight:600;color:#011526;background:#EA4F05;padding:7px 14px;">Simple</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.65);padding:7px 14px;">Dense / HD</div>
+              </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.04em;">100%</div>
+            </div>
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:24px;">
+              <div style="position:relative;width:440px;height:440px;background:#011526;overflow:hidden;box-shadow:0 20px 60px -30px rgba(0,0,0,0.8);">
+                <div style="position:absolute;right:-90px;bottom:-110px;width:420px;height:420px;background:radial-gradient(circle at 50% 50%,rgba(234,79,5,0.5),rgba(234,79,5,0.08) 55%,transparent 72%);"></div>
+                <div style="position:absolute;left:40px;top:40px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#EA4F05;font-weight:600;">Perspective</div>
+                <div style="position:absolute;left:40px;bottom:78px;right:40px;">
+                  <div style="font-size:44px;line-height:1.03;letter-spacing:-0.03em;font-weight:700;color:#fff;">From complexity to <span style="color:#EA4F05;">clarity.</span></div>
+                  <div style="margin-top:16px;font-size:15px;line-height:1.45;color:rgba(255,255,255,0.72);max-width:300px;">Institutional-grade portfolios, advised by a partner who knows your context.</div>
+                </div>
+                <img src="assets/keenai-wordmark-white.svg" style="position:absolute;left:40px;bottom:30px;height:17px;width:auto;opacity:0.92;">
+                <div style="position:absolute;right:40px;bottom:30px;font-size:11px;letter-spacing:0.04em;color:rgba(255,255,255,0.5);">Keenai Research · 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right content panel -->
+          <div style="width:302px;flex:0 0 302px;border-left:1px solid rgba(255,255,255,0.10);padding:22px 18px;box-sizing:border-box;overflow:auto;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Content</div>
+
+            <div style="margin-top:18px;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Eyebrow</div>
+              <div style="font-size:13px;color:#fff;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);padding:10px 12px;">Perspective</div>
+            </div>
+            <div style="margin-top:16px;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Headline</div>
+              <div style="font-size:13px;line-height:1.4;color:#fff;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);padding:10px 12px;min-height:52px;">From complexity to clarity.</div>
+            </div>
+            <div style="margin-top:16px;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Body</div>
+              <div style="font-size:13px;line-height:1.4;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);padding:10px 12px;min-height:64px;">Institutional-grade portfolios, advised by a partner who knows your context.</div>
+            </div>
+            <div style="margin-top:16px;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">CTA</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);padding:10px 12px;">Optional — e.g. Open account</div>
+            </div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:28px;">Footer</div>
+            <div style="margin-top:14px;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Wordmark position</div>
+              <div style="display:flex;border:1px solid rgba(255,255,255,0.16);">
+                <div style="flex:1;text-align:center;font-size:12px;font-weight:600;color:#011526;background:#EA4F05;padding:7px 0;">Left</div>
+                <div style="flex:1;text-align:center;font-size:12px;color:rgba(255,255,255,0.65);padding:7px 0;">Center</div>
+              </div>
+            </div>
+            <div style="margin-top:14px;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Source line</div>
+              <div style="font-size:13px;color:#fff;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);padding:10px 12px;">Keenai Research · 2026</div>
+            </div>
+
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:28px;">Content anchor</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;">
+              <div style="height:38px;border:1px solid rgba(255,255,255,0.16);position:relative;"><span style="position:absolute;left:6px;top:6px;width:8px;height:8px;background:rgba(255,255,255,0.4);"></span></div>
+              <div style="height:38px;border:1px solid rgba(255,255,255,0.16);position:relative;"><span style="position:absolute;right:6px;top:6px;width:8px;height:8px;background:rgba(255,255,255,0.4);"></span></div>
+              <div style="height:38px;border:1px solid rgba(255,255,255,0.16);position:relative;"><span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:rgba(255,255,255,0.4);"></span></div>
+              <div style="height:38px;border:1px solid #EA4F05;position:relative;background:rgba(234,79,5,0.08);"><span style="position:absolute;left:6px;bottom:6px;width:8px;height:8px;background:#EA4F05;"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================= OPTION 1B ========================= -->
+    <div id="1b" style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;align-items:baseline;gap:12px;">
+        <span style="display:inline-block;background:#011526;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.04em;padding:6px 12px;">1B</span>
+        <span style="font-size:15px;font-weight:600;color:#1a0d05;">Editorial single-sidebar</span>
+        <span style="font-size:13px;color:rgba(26,13,5,0.55);">Light chrome · one calm control column</span>
+      </div>
+
+      <div style="width:1360px;height:860px;background:#FFFBF9;border:1px solid rgba(0,0,0,0.12);box-shadow:0 30px 80px -40px rgba(1,21,38,0.4);display:flex;overflow:hidden;color:#1a0d05;">
+        <!-- Left control column -->
+        <div style="width:360px;flex:0 0 360px;border-right:1px solid rgba(0,0,0,0.10);padding:32px 30px;box-sizing:border-box;overflow:auto;">
+          <div style="display:flex;align-items:center;gap:11px;">
+            <img src="assets/keenai-monogram-orange.svg" style="width:22px;height:22px;display:block;">
+            <span style="font-size:15px;font-weight:600;letter-spacing:-0.01em;">Keenai Studio</span>
+          </div>
+
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:40px;">Canvas</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+            <div style="font-size:12px;font-weight:600;color:#fff;background:#011526;padding:8px 12px;">Instagram</div>
+            <div style="font-size:12px;color:rgba(26,13,5,0.7);padding:8px 12px;border:1px solid rgba(0,0,0,0.14);">Stories</div>
+            <div style="font-size:12px;color:rgba(26,13,5,0.7);padding:8px 12px;border:1px solid rgba(0,0,0,0.14);">LinkedIn</div>
+            <div style="font-size:12px;color:rgba(26,13,5,0.7);padding:8px 12px;border:1px solid rgba(0,0,0,0.14);">A4</div>
+            <div style="font-size:12px;color:rgba(26,13,5,0.7);padding:8px 12px;border:1px solid rgba(0,0,0,0.14);">Letter</div>
+          </div>
+
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:36px;">Background</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;">
+            <div style="aspect-ratio:1;background:#000;border:1px solid rgba(0,0,0,0.12);"></div>
+            <div style="aspect-ratio:1;background:#011526;border:1px solid rgba(0,0,0,0.12);"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#430D17,#EA4F05 60%,#ffb07a);outline:2px solid #EA4F05;outline-offset:-1px;border:1px solid rgba(0,0,0,0.12);"></div>
+            <div style="aspect-ratio:1;background:#FFFBF9;border:1px solid rgba(0,0,0,0.16);"></div>
+            <div style="aspect-ratio:1;background:radial-gradient(circle at 30% 30%,#c83d04,#1a0d05 70%);border:1px solid rgba(0,0,0,0.12);"></div>
+            <div style="aspect-ratio:1;background:#eef2f5;border:1px solid rgba(0,0,0,0.12);"></div>
+            <div style="aspect-ratio:1;background:#ede8e0;border:1px solid rgba(0,0,0,0.12);"></div>
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#fff 60%,#ffd4b8);border:1px solid rgba(0,0,0,0.16);"></div>
+          </div>
+
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:36px;">Content</div>
+          <div style="margin-top:16px;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Eyebrow</div>
+            <div style="font-size:13px;color:#1a0d05;background:#fff;border:1px solid rgba(0,0,0,0.14);padding:11px 13px;">Perspective</div>
+          </div>
+          <div style="margin-top:16px;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Headline</div>
+            <div style="font-size:13px;line-height:1.4;color:#1a0d05;background:#fff;border:1px solid rgba(0,0,0,0.14);padding:11px 13px;min-height:52px;">From complexity to clarity.</div>
+          </div>
+          <div style="margin-top:16px;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Body</div>
+            <div style="font-size:13px;line-height:1.4;color:rgba(26,13,5,0.8);background:#fff;border:1px solid rgba(0,0,0,0.14);padding:11px 13px;min-height:64px;">Institutional-grade portfolios, advised by a partner who knows your context.</div>
+          </div>
+          <div style="margin-top:16px;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Source line</div>
+            <div style="font-size:13px;color:#1a0d05;background:#fff;border:1px solid rgba(0,0,0,0.14);padding:11px 13px;">Keenai Research · 2026</div>
+          </div>
+        </div>
+
+        <!-- Canvas stage -->
+        <div style="flex:1;background:#f2ede6;position:relative;display:flex;align-items:center;justify-content:center;min-width:0;">
+          <div style="position:absolute;top:24px;left:28px;display:flex;border:1px solid rgba(0,0,0,0.14);background:#fff;">
+            <div style="font-size:12px;font-weight:600;color:#fff;background:#011526;padding:8px 15px;">Simple</div>
+            <div style="font-size:12px;color:rgba(26,13,5,0.65);padding:8px 15px;">Dense / HD</div>
+          </div>
+          <div style="position:absolute;top:24px;right:28px;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#011526;background:#EA4F05;padding:10px 18px;">Export PNG</div>
+
+          <div style="position:relative;width:470px;height:470px;background:#011526;overflow:hidden;box-shadow:0 24px 70px -34px rgba(1,21,38,0.7);">
+            <img src="assets/header-gradient.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.9;">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,21,38,0.15) 0%,rgba(1,21,38,0.35) 45%,rgba(1,21,38,0.9) 100%);"></div>
+            <div style="position:absolute;left:42px;top:42px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#fff;font-weight:600;">Perspective</div>
+            <div style="position:absolute;left:42px;bottom:82px;right:42px;">
+              <div style="font-size:46px;line-height:1.02;letter-spacing:-0.03em;font-weight:700;color:#fff;">From complexity to <span style="color:#ffd4b8;">clarity.</span></div>
+              <div style="margin-top:16px;font-size:15px;line-height:1.45;color:rgba(255,255,255,0.85);max-width:300px;">Institutional-grade portfolios, advised by a partner who knows your context.</div>
+            </div>
+            <img src="assets/keenai-wordmark-white.svg" style="position:absolute;left:42px;bottom:32px;height:18px;width:auto;">
+            <div style="position:absolute;right:42px;bottom:32px;font-size:11px;letter-spacing:0.04em;color:rgba(255,255,255,0.7);">Keenai Research · 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================= OPTION 1C ========================= -->
+    <div id="1c" style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;align-items:baseline;gap:12px;">
+        <span style="display:inline-block;background:#011526;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.04em;padding:6px 12px;">1C</span>
+        <span style="font-size:15px;font-weight:600;color:#1a0d05;">Canvas-forward dock</span>
+        <span style="font-size:13px;color:rgba(26,13,5,0.55);">Big canvas · icon rail · bottom library</span>
+      </div>
+
+      <div style="width:1360px;height:860px;background:#010b16;border:1px solid rgba(0,0,0,0.25);box-shadow:0 30px 80px -40px rgba(1,21,38,0.6);display:flex;flex-direction:column;overflow:hidden;color:#fff;">
+        <!-- Top toolbar -->
+        <div style="height:48px;flex:0 0 48px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;align-items:center;gap:11px;">
+            <img src="assets/keenai-monogram-white.svg" style="width:18px;height:18px;display:block;">
+            <span style="font-size:13px;font-weight:600;">Keenai Studio</span>
+          </div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.4);">Untitled — Instagram 1080×1080</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#011526;background:#EA4F05;padding:9px 15px;">Export PNG</div>
+        </div>
+
+        <div style="flex:1;display:flex;min-height:0;">
+          <!-- Slim icon rail -->
+          <div style="width:58px;flex:0 0 58px;border-right:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;align-items:center;padding-top:16px;gap:6px;">
+            <div style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(234,79,5,0.14);border-left:2px solid #EA4F05;box-sizing:border-box;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA4F05" stroke-width="1.5"><rect x="4" y="4" width="16" height="16"/></svg>
+            </div>
+            <div style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M4 14l5-5 5 5 6-6"/></svg>
+            </div>
+            <div style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"><path d="M5 6h14M9 6v13M15 6v13"/></svg>
+            </div>
+            <div style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"><path d="M12 3l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 17l8 4 8-4"/></svg>
+            </div>
+          </div>
+
+          <!-- Stage -->
+          <div style="flex:1;position:relative;background:#020c17;display:flex;align-items:center;justify-content:center;min-width:0;">
+            <div style="position:relative;width:520px;height:520px;background:#011526;overflow:hidden;box-shadow:0 26px 70px -34px rgba(0,0,0,0.85);">
+              <div style="position:absolute;left:-70px;top:-90px;width:380px;height:380px;background:radial-gradient(circle at 50% 50%,rgba(200,61,4,0.45),rgba(234,79,5,0.06) 55%,transparent 72%);"></div>
+              <div style="position:absolute;right:-60px;bottom:-70px;width:300px;height:300px;background:radial-gradient(circle at 50% 50%,rgba(67,13,23,0.7),transparent 70%);"></div>
+              <div style="position:absolute;left:48px;top:48px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#EA4F05;font-weight:600;">Perspective</div>
+              <div style="position:absolute;left:48px;bottom:92px;right:48px;">
+                <div style="font-size:50px;line-height:1.02;letter-spacing:-0.03em;font-weight:700;color:#fff;">From complexity to <span style="color:#EA4F05;">clarity.</span></div>
+                <div style="margin-top:18px;font-size:16px;line-height:1.45;color:rgba(255,255,255,0.72);max-width:340px;">Institutional-grade portfolios, advised by a partner who knows your context.</div>
+              </div>
+              <img src="assets/keenai-wordmark-white.svg" style="position:absolute;left:48px;bottom:34px;height:19px;width:auto;opacity:0.92;">
+              <div style="position:absolute;right:48px;bottom:34px;font-size:11px;letter-spacing:0.04em;color:rgba(255,255,255,0.5);">Keenai Research · 2026</div>
+            </div>
+
+            <!-- Floating content mini-panel -->
+            <div style="position:absolute;top:24px;right:24px;width:250px;background:rgba(1,21,38,0.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.14);padding:18px 16px;box-sizing:border-box;">
+              <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Content</div>
+              <div style="margin-top:14px;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Eyebrow</div>
+              <div style="margin-top:6px;font-size:12px;color:#fff;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);padding:8px 10px;">Perspective</div>
+              <div style="margin-top:12px;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Headline</div>
+              <div style="margin-top:6px;font-size:12px;line-height:1.4;color:#fff;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);padding:8px 10px;">From complexity to clarity.</div>
+              <div style="margin-top:12px;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Body</div>
+              <div style="margin-top:6px;font-size:12px;line-height:1.4;color:rgba(255,255,255,0.82);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);padding:8px 10px;">Advised by a partner who knows your context.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom dock -->
+        <div style="height:128px;flex:0 0 128px;border-top:1px solid rgba(255,255,255,0.10);display:flex;align-items:stretch;padding:16px 20px;box-sizing:border-box;gap:24px;">
+          <div style="flex:0 0 auto;display:flex;flex-direction:column;justify-content:center;gap:10px;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Template</div>
+            <div style="display:flex;border:1px solid rgba(255,255,255,0.16);">
+              <div style="font-size:12px;font-weight:600;color:#011526;background:#EA4F05;padding:8px 14px;">Simple</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.65);padding:8px 14px;">Dense / HD</div>
+            </div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,0.10);"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:10px;">Background library</div>
+            <div style="display:flex;gap:12px;overflow:hidden;">
+              <div style="flex:0 0 68px;height:52px;background:radial-gradient(circle at 30% 30%,#c83d04,#011526 72%);outline:2px solid #EA4F05;outline-offset:-1px;"></div>
+              <div style="flex:0 0 68px;height:52px;background:#000;border:1px solid rgba(255,255,255,0.14);"></div>
+              <div style="flex:0 0 68px;height:52px;background:linear-gradient(135deg,#430D17,#EA4F05 60%,#ffb07a);border:1px solid rgba(255,255,255,0.14);"></div>
+              <div style="flex:0 0 68px;height:52px;background:linear-gradient(115deg,#1a0d05,#4a1a08 55%,#160a03);border:1px solid rgba(255,255,255,0.14);"></div>
+              <div style="flex:0 0 68px;height:52px;background:radial-gradient(ellipse at 40% 60%,rgba(200,61,4,0.5),#120802 70%);border:1px solid rgba(255,255,255,0.14);"></div>
+              <div style="flex:0 0 68px;height:52px;background:#FFFBF9;border:1px solid rgba(255,255,255,0.14);"></div>
+              <div style="flex:0 0 68px;height:52px;background:#eef2f5;border:1px solid rgba(255,255,255,0.14);"></div>
+              <div style="flex:0 0 68px;height:52px;background:radial-gradient(circle at 50% 80%,rgba(255,128,64,0.4),#0a0603 68%);border:1px solid rgba(255,255,255,0.14);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

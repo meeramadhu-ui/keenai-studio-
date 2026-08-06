@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/brand-ds-019e0666-6ec9-7b9c-acd9-c30b17f28dc3/colors_and_type.css">
+<script src="_ds/brand-ds-019e0666-6ec9-7b9c-acd9-c30b17f28dc3/_ds_bundle.js"></script>
+<script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<style>
+  html, body { margin:0; height:100%; background:
+      radial-gradient(760px 520px at 8% -4%, rgba(234,79,5,0.13), transparent 60%),
+      radial-gradient(820px 620px at 102% 104%, rgba(1,21,38,0.14), transparent 55%),
+      linear-gradient(135deg, #f4eee6 0%, #eee6dc 52%, #f1e6d9 100%); background-attachment:fixed; }
+  a { color:#B72A06; text-decoration:none; }
+  a:hover { color:#EA4F05; text-decoration:underline; }
+  .ks-field { width:100%; box-sizing:border-box; font-family:'Inter',sans-serif; font-size:13px; line-height:1.4; color:#1a0d05; background:rgba(255,255,255,0.62); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.7); box-shadow:inset 0 1px 0 rgba(255,255,255,0.5); padding:11px 13px; border-radius:10px; outline:none; resize:none; }
+  .ks-field:focus { border-color:#EA4F05; background:rgba(255,255,255,0.8); }
+  .ks-field::placeholder { color:rgba(26,13,5,0.4); }
+</style>
+</helmet>
+
+<div style="width:100vw;height:100vh;display:flex;overflow:hidden;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1a0d05;background:transparent;padding:14px;box-sizing:border-box;gap:14px;">
+
+  <!-- Left control column -->
+  <div style="width:360px;flex:0 0 360px;height:100%;box-sizing:border-box;overflow:auto;padding:28px 26px 44px;background:rgba(255,255,255,0.45);backdrop-filter:blur(26px) saturate(1.4);-webkit-backdrop-filter:blur(26px) saturate(1.4);border:1px solid rgba(255,255,255,0.6);border-radius:22px;box-shadow:0 20px 50px -28px rgba(1,21,38,0.4), inset 0 1px 0 rgba(255,255,255,0.6);">
+    <div style="display:flex;align-items:center;gap:13px;">
+      <div style="position:relative;width:42px;height:42px;flex:0 0 42px;border-radius:13px;background:linear-gradient(150deg,#0a1a2b,#02101d);border:1px solid rgba(255,255,255,0.14);box-shadow:0 8px 20px -10px rgba(1,21,38,0.6), inset 0 1px 0 rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="position:absolute;right:-8px;bottom:-10px;width:44px;height:44px;background:radial-gradient(circle at 50% 50%,rgba(234,79,5,0.55),transparent 68%);"></div>
+        <img src="assets/keenai-monogram-orange.svg" style="position:relative;width:22px;height:22px;display:block;">
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1;">
+        <span style="font-size:18px;font-weight:700;letter-spacing:-0.02em;color:#0a1a2b;">Keenai</span>
+        <span style="margin-top:4px;font-size:10px;font-weight:600;letter-spacing:0.34em;text-transform:uppercase;color:#EA4F05;">Studio</span>
+      </div>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:38px;">Canvas size</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+      <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="7">
+        <div onClick="{{ s.pick }}" style="{{ s.style }}">{{ s.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:34px;">Background</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;">
+      <sc-for list="{{ backgrounds }}" as="b" hint-placeholder-count="8">
+        <div onClick="{{ b.pick }}" title="{{ b.name }}" style="{{ b.swatchStyle }}"></div>
+      </sc-for>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:rgba(26,13,5,0.55);">{{ bgName }}</div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:28px;">Photo textures</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;">
+      <sc-for list="{{ photoTextures }}" as="b" hint-placeholder-count="6">
+        <div onClick="{{ b.pick }}" title="{{ b.name }}" style="{{ b.swatchStyle }}"></div>
+      </sc-for>
+    </div>
+    <div onClick="{{ onGenerate }}" style="margin-top:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:#011526;border:1px solid rgba(0,0,0,0.2);padding:10px 12px;" title="Generate a fresh on-brand ember glow">
+      <span style="color:#EA4F05;font-size:14px;">✦</span> Generate background
+    </div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:34px;">Template</div>
+    <div style="display:flex;border:1px solid rgba(0,0,0,0.14);margin-top:14px;">
+      <div onClick="{{ pickSimple }}" style="{{ simpleTabStyle }}">Simple</div>
+      <div onClick="{{ pickDense }}" style="{{ denseTabStyle }}">Dense / HD</div>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:34px;">Layout</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;">
+      <sc-for list="{{ layouts }}" as="l" hint-placeholder-count="4">
+        <div onClick="{{ l.pick }}" style="{{ l.style }}">{{ l.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:34px;">Content anchor</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;">
+      <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="4">
+        <div onClick="{{ a.pick }}" style="{{ a.style }}"><span style="{{ a.dotStyle }}"></span></div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,13,5,0.5);margin-top:34px;">Content</div>
+    <div style="margin-top:14px;display:flex;gap:8px;align-items:stretch;">
+      <input class="ks-field" value="{{ aiTopic }}" onInput="{{ onAiTopic }}" placeholder="Topic — e.g. private credit for NRIs" style="flex:1;">
+      <div onClick="{{ onDraft }}" style="cursor:pointer;display:flex;align-items:center;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:0.04em;color:#fff;background:#011526;padding:0 14px;">{{ aiLabel }}</div>
+    </div>
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Eyebrow</div>
+      <input class="ks-field" value="{{ eyebrow }}" onInput="{{ onEyebrow }}" placeholder="Eyebrow — e.g. Perspective">
+    </div>
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Headline</div>
+      <textarea class="ks-field" rows="2" onInput="{{ onHeadline }}" placeholder="Headline">{{ headline }}</textarea>
+    </div>
+    <div style="margin-top:12px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Accent word (ember)</div>
+      <input class="ks-field" value="{{ accentWord }}" onInput="{{ onAccent }}" placeholder="Word to highlight">
+    </div>
+    <div style="margin-top:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);">Body</div>
+        <div style="display:flex;border:1px solid rgba(0,0,0,0.14);">
+          <div onClick="{{ pickPara }}" style="{{ paraTabStyle }}"><span style="padding:0 12px;">Paragraph</span></div>
+          <div onClick="{{ pickBullets }}" style="{{ bulletsTabStyle }}"><span style="padding:0 12px;">Bullets</span></div>
+        </div>
+      </div>
+      <textarea class="ks-field" rows="3" onInput="{{ onBody }}" placeholder="Supporting copy (one line per bullet / paragraph)">{{ body }}</textarea>
+    </div>
+    <div style="margin-top:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);">Call to action</div>
+        <div style="display:flex;border:1px solid rgba(0,0,0,0.14);">
+          <div onClick="{{ pickCtaFill }}" style="{{ ctaFillStyle }}"><span style="padding:0 12px;">Fill</span></div>
+          <div onClick="{{ pickCtaOutline }}" style="{{ ctaOutlineStyle }}"><span style="padding:0 12px;">Outline</span></div>
+        </div>
+      </div>
+      <input class="ks-field" value="{{ cta }}" onInput="{{ onCta }}" placeholder="Optional — e.g. Open account">
+    </div>
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Source line</div>
+      <input class="ks-field" value="{{ source }}" onInput="{{ onSource }}" placeholder="Source / attribution">
+    </div>
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(26,13,5,0.45);margin-bottom:8px;">Logo position</div>
+      <div style="display:flex;border:1px solid rgba(0,0,0,0.14);">
+        <div onClick="{{ pickLogoLeft }}" style="{{ logoLeftStyle }}">Left</div>
+        <div onClick="{{ pickLogoCenter }}" style="{{ logoCenterStyle }}">Center</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas stage -->
+  <div style="flex:1;min-width:0;height:100%;display:flex;flex-direction:column;background:rgba(255,255,255,0.22);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,0.5);border-radius:22px;box-shadow:0 20px 50px -30px rgba(1,21,38,0.35), inset 0 1px 0 rgba(255,255,255,0.5);overflow:hidden;">
+    <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;">
+      <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.7);border-radius:999px;padding:7px 14px;box-shadow:0 6px 16px -8px rgba(1,21,38,0.35);">
+        <span style="font-size:12px;color:rgba(26,13,5,0.62);letter-spacing:0.04em;white-space:nowrap;">{{ dimLabel }}</span>
+        <span style="font-size:12px;color:rgba(26,13,5,0.62);letter-spacing:0.04em;">{{ zoomLabel }}</span>
+      </div>
+      <div onClick="{{ onExport }}" style="cursor:pointer;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#fff;background:#EA4F05;padding:12px 22px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 24px -8px rgba(234,79,5,0.7), inset 0 1px 0 rgba(255,255,255,0.35);">Export PNG</div>
+    </div>
+    <div ref="{{ stageRef }}" style="flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 18px 22px;box-sizing:border-box;">
+
+    <!-- scaled canvas -->
+    <div style="{{ canvasWrapStyle }}">
+      <div ref="{{ canvasRef }}" style="{{ canvasStyle }}">
+        <div style="{{ bgLayerStyle }}"></div>
+        <div style="{{ scrimStyle }}"></div>
+        <div style="{{ pictureWrapStyle }}">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ks-picture" shape="rect" placeholder="Drop a picture" hint-size="100%,100%"></x-import>
+        </div>
+        <div style="{{ pictureScrimStyle }}"></div>
+        <div style="{{ contentStyle }}">
+          <div style="{{ measureWrapStyle }}" ref="{{ measureBlockRef }}">
+            <div style="{{ textGroupStyle }}">
+              <sc-if value="{{ eyebrow }}" hint-placeholder-val="{{ true }}">
+                <div style="{{ eyebrowStyle }}">{{ eyebrow }}</div>
+              </sc-if>
+              <div style="{{ headlineStyle }}">{{ headlineNode }}</div>
+              <sc-if value="{{ body }}" hint-placeholder-val="{{ true }}">
+                <div style="{{ bodyStyle }}">{{ bodyNode }}</div>
+              </sc-if>
+              <sc-if value="{{ cta }}" hint-placeholder-val="{{ true }}">
+                <div style="{{ ctaStyle }}">{{ cta }}</div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ inBlockFooter }}" hint-placeholder-val="{{ true }}">
+              <div style="{{ blockFooterRowStyle }}">
+                <img src="assets/keenai-wordmark-white.svg" style="{{ blockWordmarkStyle }}">
+                <sc-if value="{{ footerSourceShown }}" hint-placeholder-val="{{ true }}">
+                  <span style="{{ blockSourceStyle }}">{{ footerSourceShown }}</span>
+                </sc-if>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <sc-if value="{{ showPinnedFooter }}" hint-placeholder-val="{{ true }}">
+          <img src="assets/keenai-wordmark-white.svg" style="{{ wordmarkStyle }}">
+          <sc-if value="{{ footerSourceShown }}" hint-placeholder-val="{{ true }}">
+            <div style="{{ sourceStyle }}">{{ footerSourceShown }}</div>
+          </sc-if>
+        </sc-if>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.stageRef = React.createRef();
+    this.canvasRef = React.createRef();
+    this.measureBlockRef = React.createRef();
+    this.state = {
+      measuredH: null,
+      measuredKey: '',
+      liShrinkFit: null,
+      liShrinkFitKey: '',
+      sizeKey: 'ig',
+      bgKey: 'glow',
+      template: 'simple',
+      layout: 'classic',
+      anchor: 'bl',
+      eyebrow: 'Perspective',
+      headline: 'From complexity to clarity.',
+      accentWord: 'clarity.',
+      body: 'Institutional-grade portfolios, advised by a partner who knows your context.',
+      bodyMode: 'para',
+      cta: '',
+      ctaMode: 'fill',
+      logoPos: 'left',
+      generatedBg: null,
+      aiTopic: '',
+      aiBusy: false,
+      source: 'Keenai Research · 2026',
+      scale: 0.4,
+    };
+    this._measure = this._measure.bind(this);
+  }
+
+  componentDidMount() {
+    this._measure();
+    this._measureTextBlock();
+    window.addEventListener('resize', this._measure);
+    if (window.ResizeObserver && this.stageRef.current) {
+      this._ro = new ResizeObserver(this._measure);
+      this._ro.observe(this.stageRef.current);
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._measure);
+    if (this._ro) this._ro.disconnect();
+  }
+
+  componentDidUpdate() {
+    this._measureTextBlock();
+  }
+
+  _measureTextBlock() {
+    const s = this.state;
+    const isLi = s.sizeKey === 'li' && s.layout !== 'classic';
+    const needsMeasure = (s.layout === 'topBottom' || s.layout === 'giantPicture') || isLi;
+    const el = this.measureBlockRef.current;
+    if (!needsMeasure || !el) return;
+    const h = el.scrollHeight;
+    const key = [s.layout, s.sizeKey, s.headline, s.eyebrow, s.body, s.cta, s.template, s.bodyMode].join('|');
+    if (isLi && el.parentElement) {
+      const cs = getComputedStyle(el.parentElement);
+      const avail = el.parentElement.clientHeight - parseFloat(cs.paddingTop || 0) - parseFloat(cs.paddingBottom || 0);
+      if (h > avail + 1) {
+        const applied = this._lastLiShrinkApplied || 1;
+        const corrected = Math.max(0.22, Math.min(1, applied * (avail * 0.96 / h)));
+        if (key !== s.liShrinkFitKey || Math.abs(corrected - (s.liShrinkFit || 0)) > 0.008) {
+          this.setState({ liShrinkFit: corrected, liShrinkFitKey: key });
+          return;
+        }
+      } else if (key !== s.liShrinkFitKey) {
+        this.setState({ liShrinkFit: this._lastLiShrinkApplied || 1, liShrinkFitKey: key });
+        return;
+      }
+    }
+    if (key !== s.measuredKey || Math.abs((s.measuredH || 0) - h) > 2) {
+      this.setState({ measuredH: h, measuredKey: key });
+    }
+  }
+
+  async _exportPNG() {
+    const node = this.canvasRef.current;
+    if (!node || !window.htmlToImage) return;
+    try {
+      const dataUrl = await window.htmlToImage.toPng(node, { cacheBust: true, pixelRatio: 1, width: node.offsetWidth, height: node.offsetHeight });
+      const a = document.createElement('a');
+      a.download = 'keenai-' + this.state.sizeKey + '.png';
+      a.href = dataUrl;
+      a.click();
+    } catch (e) { console.error('export failed', e); }
+  }
+
+  _generateBg() {
+    const cx = (8 + Math.random() * 84).toFixed(0);
+    const cy = (8 + Math.random() * 84).toFixed(0);
+    const hue = Math.random() < 0.5 ? '234,79,5' : '200,61,4';
+    const layer = 'radial-gradient(circle at ' + cx + '% ' + cy + '%, rgba(' + hue + ',0.55), rgba(' + hue + ',0.06) 52%, transparent 72%)';
+    const gen = { name: 'Generated', dark: true, layer: layer, base: '#011526', swatch: layer + ', linear-gradient(#011526,#011526)' };
+    this.setState({ generatedBg: gen, bgKey: 'generated' });
+  }
+
+  async _draftCopy() {
+    if (!window.claude || !window.claude.complete) { alert('AI drafting runs when the design is opened as a prototype with Claude enabled.'); return; }
+    const topic = (this.state.aiTopic || '').trim();
+    if (!topic) return;
+    this.setState({ aiBusy: true });
+    try {
+      const prompt = 'You are Keenai, a premium wealth-tech brand for NRI investors. Voice: calm, editorial, assured, sentence case. Topic: "' + topic + '". Return ONLY minified JSON with keys eyebrow (one word), headline (a short statement ending in a period), accentWord (one word taken verbatim from the headline to highlight), body (one calm sentence). No prose, no code fence.';
+      const res = await window.claude.complete(prompt);
+      const m = res.match(/\{[\s\S]*\}/);
+      const j = JSON.parse(m ? m[0] : res);
+      const str = (v, fb) => (typeof v === 'string' && v.trim()) ? v : fb;
+      this.setState({ eyebrow: str(j.eyebrow, this.state.eyebrow), headline: str(j.headline, this.state.headline), accentWord: str(j.accentWord, this.state.accentWord), body: str(j.body, this.state.body), aiBusy: false });
+    } catch (e) { console.error(e); this.setState({ aiBusy: false }); alert('Could not draft copy — try again.'); }
+  }
+
+  _dims() {
+    const t = {
+      ig:   { w: 1080, h: 1080, label: 'Instagram' },
+      story:{ w: 1080, h: 1920, label: 'Stories' },
+      li:   { w: 1200, h: 627,  label: 'LinkedIn' },
+      a4:   { w: 794,  h: 1123, label: 'A4' },
+      a3:   { w: 1123, h: 1587, label: 'A3' },
+      letter:{ w: 816, h: 1056, label: 'Letter' },
+      a5:   { w: 559,  h: 794,  label: 'A5' },
+    };
+    return t[this.state.sizeKey];
+  }
+
+  _measure() {
+    const el = this.stageRef.current;
+    if (!el) return;
+    const pad = 56;
+    const { w, h } = this._dims();
+    const s = Math.min((el.clientWidth - pad) / w, (el.clientHeight - pad) / h);
+    this.setState({ scale: Math.max(0.05, s) });
+  }
+
+  _bgDefs() {
+    return {
+      glow:   { name: 'Ember Glow', dark: true,  layer: 'radial-gradient(circle at 78% 88%, rgba(234,79,5,0.5), rgba(234,79,5,0.07) 52%, transparent 70%)', base: '#011526', swatch: 'radial-gradient(circle at 70% 72%, rgba(234,79,5,0.7), #011526 68%)' },
+      navy:   { name: 'Dark Navy', dark: true,  layer: 'linear-gradient(155deg,#041828,#020d14)', base: '#041828', swatch: 'linear-gradient(155deg,#041828,#020d14)' },
+      black:  { name: 'Deep Black', dark: true,  layer: 'radial-gradient(ellipse at 30% 40%,#120808,#000)', base: '#000000', swatch: 'radial-gradient(ellipse at 30% 40%,#120808,#000)' },
+      velvet: { name: 'Deep Velvet (photo)', dark: true, image: true, scrim: 'linear-gradient(180deg, rgba(1,21,38,0.15) 0%, rgba(1,21,38,0.35) 45%, rgba(1,21,38,0.9) 100%)', base: '#011526', swatch: 'radial-gradient(ellipse at 40% 40%, rgba(200,61,4,0.55), #120802 72%)' },
+      flame:  { name: 'Orange Flame', dark: true, layer: 'radial-gradient(ellipse at 70% 70%,#c8401a,#0d0000)', base: '#0d0000', swatch: 'radial-gradient(ellipse at 70% 70%,#c8401a,#0d0000)' },
+      whiteRadial: { name: 'White Radial', dark: false, layer: 'radial-gradient(ellipse at 20% 30%,#ffffff,#EA4F05)', base: '#ffffff', swatch: 'radial-gradient(ellipse at 20% 30%,#ffffff,#EA4F05)' },
+      warm:   { name: 'Warm White', dark: false, base: '#FFFBF9', swatch: '#FFFBF9' },
+      marble: { name: 'Marble', dark: false, base: '#ede8e0', swatch: '#ede8e0' },
+      arctic: { name: 'Arctic', dark: false, base: '#eef2f5', swatch: '#eef2f5' },
+    };
+  }
+
+  // Photo-texture backgrounds (gradient approximations of the Figma photo-texture set)
+  _texDefs() {
+    return {
+      crumpledSilk:   { name: 'Crumpled Silk',   dark: true, image: 'assets/textures/crumpled-silk.jpg',   base: '#3d1200', swatch: 'url(assets/textures/crumpled-silk.jpg) center/cover' },
+      velvetDrape:    { name: 'Velvet Drape',    dark: true, image: 'assets/textures/velvet-drape.jpg',     base: '#2a0a00', swatch: 'url(assets/textures/velvet-drape.jpg) center/cover' },
+      wavySatin:      { name: 'Wavy Satin',      dark: true, image: 'assets/textures/wavy-satin.jpg',       base: '#8b2800', swatch: 'url(assets/textures/wavy-satin.jpg) center/cover' },
+      foldedMaterial: { name: 'Folded Material', dark: true, image: 'assets/textures/folded-material.jpg',  base: '#041828', swatch: 'url(assets/textures/folded-material.jpg) center/cover' },
+      particleFlow:   { name: 'Particle Flow',   dark: true, image: 'assets/textures/particle-flow.jpg',    base: '#041828', swatch: 'url(assets/textures/particle-flow.jpg) center/cover' },
+      deepVelvetTex:  { name: 'Deep Velvet',     dark: true, image: 'assets/textures/deep-velvet.jpg',      base: '#1a0800', swatch: 'url(assets/textures/deep-velvet.jpg) center/cover' },
+    };
+  }
+
+  renderVals() {
+    const st = this.state;
+    const dims = this._dims();
+    const bgDefs = this._bgDefs();
+    const texDefs = this._texDefs();
+    const allBgDefs = Object.assign({}, bgDefs, texDefs);
+    if (st.generatedBg) allBgDefs.generated = st.generatedBg;
+    const bg = allBgDefs[st.bgKey] || bgDefs.glow;
+    const unit = dims.w / 1080;
+    const P = Math.round(dims.w * 0.075);
+    // vertical inset grows on tall canvases so content lifts off the bottom edge; logo scales with canvas average
+    const vpad = Math.round(P + Math.max(0, dims.h - dims.w) * 0.08);
+    const logoH = Math.round((dims.w + dims.h) / 2 * 0.045);
+    const dark = bg.dark;
+
+    const fg = dark ? '#FFFFFF' : '#1a0d05';
+    const accent = dark ? '#EA4F05' : '#B72A06';
+    const eyebrowColor = (st.bgKey === 'velvet') ? '#FFFFFF' : accent;
+    const bodyColor = dark ? 'rgba(255,255,255,0.75)' : 'rgba(26,13,5,0.78)';
+    const footerMuted = dark ? 'rgba(255,255,255,0.55)' : 'rgba(26,13,5,0.55)';
+    const logoCenter = st.logoPos === 'center';
+    const footerSourceShown = logoCenter ? '' : st.source;
+
+    const isDoc = ['a4', 'a3', 'letter', 'a5'].includes(st.sizeKey);
+    const docTrim = isDoc ? 2 : 0;
+    // text-only layout on tall canvases has a lot of vertical gap — scale type up with how much taller than wide the canvas is
+    const tallRatio = st.layout === 'classic' ? Math.max(0, dims.h / dims.w - 1) : 0;
+    // guard against content overflowing the canvas: shrink type as the body grows longer (rough line-count proxy, works before we know which body layout renders)
+    const rawBodyLineCount = (st.body || '').split('\n').filter(s => s.trim()).length;
+    const overflowShrink = rawBodyLineCount > 2 ? Math.max(0.5, 1 - (rawBodyLineCount - 2) * 0.09) : 1;
+    let hSize = Math.round(((st.template === 'simple' ? 80 : 46) * unit + tallRatio * 40) * overflowShrink) - 2 - (dims.w === dims.h ? 4 : 0) - docTrim;
+    let eSize = Math.round(((st.template === 'simple' ? 24 : 18) * unit + tallRatio * 11) * overflowShrink) - docTrim;
+    let bSize = Math.round(((st.template === 'simple' ? 30 : 22) * unit + tallRatio * 15) * overflowShrink) - docTrim;
+    const fSize = Math.round(20 * unit);
+
+    // headline with accent word
+    let headlineNode = st.headline;
+    const hText = (typeof st.headline === 'string') ? st.headline : (st.headline == null ? '' : String(st.headline));
+    headlineNode = hText;
+    const aw = (st.accentWord || '').trim();
+    if (aw) {
+      const idx = hText.toLowerCase().indexOf(aw.toLowerCase());
+      if (idx >= 0) {
+        headlineNode = React.createElement(React.Fragment, null,
+          hText.slice(0, idx),
+          React.createElement('span', { style: { color: accent } }, hText.slice(idx, idx + aw.length)),
+          hText.slice(idx + aw.length)
+        );
+      }
+    }
+
+    // body node — paragraphs or bullets
+    const bodyLines = (st.body || '').split('\n').map(s => s.trim()).filter(Boolean);
+    let bodyNode = st.body;
+
+    // detect leading numeric/percentage/currency/date/ranking token per line
+    const statRe = /^\s*(#?[+-]?(?:[$₹€£]\s?)?\d[\d,]*\.?\d*\s?(?:%|x|bn|mn|K|M|B)?\+?)\s*(?:[:\-–—]\s*)?(.+)$/i;
+    const parseStat = (line) => {
+      const m = line.match(statRe);
+      if (!m) return null;
+      const label = m[2].trim();
+      if (!label) return null;
+      return { value: m[1].trim(), label };
+    };
+
+    // highlight numeric/currency/percent/date/ranking tokens inline within prose
+    const numTokenRe = /([$₹€£]\s?\d[\d,]*\.?\d*\s?(?:%|x|bn|mn|K|M|B)?|\d[\d,]*\.?\d*\s?%|#\d+|\b\d{4}\b|\d[\d,]*\.?\d*[KMB]\b)/g;
+    const tokenize = (text) => {
+      const out = []; let last = 0, m;
+      numTokenRe.lastIndex = 0;
+      while ((m = numTokenRe.exec(text))) {
+        if (m.index > last) out.push({ t: text.slice(last, m.index), n: false });
+        out.push({ t: m[0], n: true });
+        last = m.index + m[0].length;
+      }
+      if (last < text.length) out.push({ t: text.slice(last), n: false });
+      return out;
+    };
+    const numSpanStyle = { color: accent, fontWeight: 700, fontFeatureSettings: '"tnum","lnum"' };
+    const renderLine = (text, keyPrefix) => tokenize(text).map((seg, i) => seg.n
+      ? React.createElement('span', { key: keyPrefix + '-' + i, style: numSpanStyle }, seg.t)
+      : React.createElement(React.Fragment, { key: keyPrefix + '-' + i }, seg.t));
+
+    const stats = bodyLines.length ? bodyLines.map(parseStat) : [];
+    const isStatGrid = stats.length >= 1 && stats.every(Boolean) && stats.length <= 6;
+
+    // "Title: description" lines (non-numeric lead) — render as a bulleted editorial row list
+    const rowRe = /^([^:\-–—]{1,50}?)\s*[:\-–—]\s*(.+)$/;
+    const parseRow = (line) => {
+      if (parseStat(line)) return null;
+      const m = line.match(rowRe);
+      if (!m) return null;
+      const title = m[1].trim();
+      const desc = m[2].trim();
+      if (!title || !desc) return null;
+      return { title, desc };
+    };
+    const rows = (!isStatGrid && bodyLines.length) ? bodyLines.map(parseRow) : [];
+    const isRowList = !isStatGrid && rows.length >= 2 && rows.every(Boolean) && rows.length <= 6;
+
+    // LinkedIn split scales its own (smaller) type independently, and must do so BEFORE the row-list/stat-grid
+    // body below is built (it bakes bSize into the row/stat React nodes) so the whole block shrinks together.
+    const isLiSplitEarly = st.sizeKey === 'li' && st.layout !== 'classic';
+    let liShrinkValue = 1;
+    if (isLiSplitEarly) {
+      const liBaseH = (st.template === 'simple' ? 38 : 30) * unit;
+      const liBaseE = (st.template === 'simple' ? 18 : 14) * unit;
+      const liBaseB = (st.template === 'simple' ? 17 : 15) * unit;
+      const charsPerLineLi = Math.max(10, (dims.w * 0.5 - 2 * P) / (liBaseB * 0.56));
+      const bodyBlockHLi = isStatGrid
+        ? rawBodyLineCount * liBaseB * 3.7
+        : isRowList
+          ? rows.reduce((sum, r) => sum + liBaseB * 1.3 + Math.max(1, Math.ceil((r.desc || '').length / charsPerLineLi)) * liBaseB * 1.5 + liBaseB * 0.9, 0)
+          : Math.max(rawBodyLineCount, bodyLines.reduce((sum, l) => sum + Math.max(1, Math.ceil(l.length / charsPerLineLi)), 0)) * liBaseB * 1.75;
+      const liNaturalH = liBaseH * 1.3 + (st.eyebrow ? liBaseE * 2.4 : 0) + bodyBlockHLi + fSize * 3.2 + Math.round(16 * unit) + logoH;
+      const liAvailH = dims.h - Math.round(dims.h * 0.14) - Math.round(dims.h * 0.07);
+      const liFormulaShrink = Math.max(0.32, Math.min(1, (liAvailH * 0.85) / liNaturalH));
+      const liMeasureKey = [st.layout, st.sizeKey, st.headline, st.eyebrow, st.body, st.cta, st.template, st.bodyMode].join('|');
+      liShrinkValue = (this.state.liShrinkFitKey === liMeasureKey && this.state.liShrinkFit != null) ? this.state.liShrinkFit : liFormulaShrink;
+      this._lastLiShrinkApplied = liShrinkValue;
+      hSize = Math.round(liBaseH * liShrinkValue);
+      eSize = Math.round(liBaseE * liShrinkValue);
+      bSize = Math.round(liBaseB * liShrinkValue);
+    }
+
+    if (isStatGrid) {
+      const cols = stats.length === 1 ? 1 : stats.length === 3 ? 3 : (stats.length % 3 === 0 ? 3 : 2);
+      const statValSize = Math.round(hSize * 0.52);
+      bodyNode = React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(' + cols + ',1fr)', gap: Math.round(20 * unit) + 'px', width: '100%' } },
+        stats.map((s, i) => React.createElement('div', { key: i, style: { borderTop: '1px solid ' + (dark ? 'rgba(255,255,255,0.18)' : 'rgba(26,13,5,0.16)'), paddingTop: Math.round(14 * unit) + 'px' } },
+          React.createElement('div', { style: { fontSize: statValSize + 'px', lineHeight: 1, fontWeight: 700, letterSpacing: '-0.02em', color: accent, fontFeatureSettings: '"tnum","lnum"' } }, s.value),
+          React.createElement('div', { style: { marginTop: Math.round(8 * unit) + 'px', fontSize: bSize + 'px', lineHeight: 1.35, color: bodyColor } }, s.label)
+        ))
+      );
+    } else if (isRowList) {
+      const hairline = dark ? 'rgba(255,255,255,0.14)' : 'rgba(26,13,5,0.14)';
+      bodyNode = React.createElement('div', { style: { display: 'flex', flexDirection: 'column', width: '100%' } },
+        rows.map((r, i) => React.createElement('div', { key: i, style: { display: 'flex', gap: Math.round(16 * unit) + 'px', alignItems: 'flex-start', padding: Math.round((st.layout === 'classic' ? 14 : 8) * unit) + 'px 0', borderTop: i > 0 ? '1px solid ' + hairline : 'none' } },
+          React.createElement('span', { style: { color: accent, fontSize: bSize + 'px', lineHeight: 1.4, flex: '0 0 auto' } }, '\u2022'),
+          React.createElement('div', null,
+            React.createElement('div', { style: { fontWeight: 700, fontSize: Math.round(bSize * 1.08) + 'px', lineHeight: 1.3, color: fg } }, r.title),
+            React.createElement('div', { style: { marginTop: Math.round(4 * unit) + 'px', fontSize: bSize + 'px', lineHeight: 1.4, color: bodyColor } }, renderLine(r.desc, 'r' + i))
+          )
+        ))
+      );
+    } else if (st.bodyMode === 'bullets' && bodyLines.length) {
+      bodyNode = React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: Math.round(12 * unit) + 'px' } },
+        bodyLines.map((ln, i) => React.createElement('div', { key: i, style: { display: 'flex', gap: Math.round(14 * unit) + 'px', alignItems: 'flex-start' } },
+          React.createElement('span', { style: { color: accent, flex: '0 0 auto' } }, '\u2014'),
+          React.createElement('span', null, renderLine(ln, 'b' + i))
+        ))
+      );
+    } else if (bodyLines.length > 1) {
+      bodyNode = React.createElement('div', { style: { display: 'flex', flexDirection: 'column', gap: Math.round(14 * unit) + 'px' } },
+        bodyLines.map((ln, i) => React.createElement('div', { key: i }, renderLine(ln, 'p' + i)))
+      );
+    } else if (st.body) {
+      bodyNode = renderLine(st.body, 'p0');
+    }
+
+    const ctaRadius = '999px';
+    const ctaPad = Math.round(14 * unit) + 'px ' + Math.round(26 * unit) + 'px';
+    const ctaStyle = (st.ctaMode === 'outline')
+      ? { alignSelf: 'flex-start', marginTop: Math.round(28 * unit) + 'px', fontSize: Math.round((st.template === 'simple' ? 20 : 17) * unit) + 'px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: '#EA4F05', background: 'transparent', border: '2px solid #EA4F05', borderRadius: ctaRadius, padding: ctaPad, whiteSpace: 'nowrap' }
+      : { alignSelf: 'flex-start', marginTop: Math.round(28 * unit) + 'px', fontSize: Math.round((st.template === 'simple' ? 20 : 17) * unit) + 'px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', color: '#011526', background: '#EA4F05', border: '2px solid #EA4F05', borderRadius: ctaRadius, padding: ctaPad, whiteSpace: 'nowrap' };
+
+    // anchor -> content block position
+    const align = st.anchor === 'tr' ? 'right' : (st.anchor === 'c' ? 'center' : 'left');
+    const Pc = P + Math.round(20 * unit);
+    const footerCeil = Math.round(vpad + logoH + (dims.w === dims.h ? Math.max(90, 24 * unit) : Math.max(170, 44 * unit)));
+    let contentStyle = { position: 'absolute', boxSizing: 'border-box', textAlign: align, maxWidth: dims.w - Pc * 2 + 'px', overflow: 'hidden' };
+    if (st.anchor === 'tl') { contentStyle.left = Pc + 'px'; contentStyle.top = Pc + 'px'; contentStyle.right = Pc + 'px'; contentStyle.bottom = footerCeil + 'px'; }
+    else if (st.anchor === 'tr') { contentStyle.left = Pc + 'px'; contentStyle.top = Pc + 'px'; contentStyle.right = Pc + 'px'; contentStyle.bottom = footerCeil + 'px'; }
+    else if (st.anchor === 'c') { contentStyle.left = Pc + 'px'; contentStyle.right = Pc + 'px'; contentStyle.top = Pc + 'px'; contentStyle.bottom = footerCeil + 'px'; contentStyle.display = 'flex'; contentStyle.flexDirection = 'column'; contentStyle.justifyContent = 'center'; }
+    else { contentStyle.left = Pc + 'px'; contentStyle.right = Pc + 'px'; contentStyle.top = Pc + 'px'; contentStyle.bottom = footerCeil + 'px'; contentStyle.display = 'flex'; contentStyle.flexDirection = 'column'; contentStyle.justifyContent = 'flex-end'; }
+
+    const canvasStyle = { position: 'relative', width: dims.w + 'px', height: dims.h + 'px', background: bg.base, overflow: 'hidden', boxShadow: '0 24px 70px -34px rgba(1,21,38,0.7)' };
+    const canvasWrapStyle = { transform: 'scale(' + st.scale + ')', transformOrigin: 'center center' };
+
+    const bgLayerStyle = { position: 'absolute', inset: 0 };
+    if (bg.image === true) { bgLayerStyle.backgroundImage = 'url(assets/header-gradient.png)'; bgLayerStyle.backgroundSize = 'cover'; bgLayerStyle.backgroundPosition = 'center'; }
+    else if (typeof bg.image === 'string') { bgLayerStyle.backgroundImage = 'url(' + bg.image + ')'; bgLayerStyle.backgroundSize = 'cover'; bgLayerStyle.backgroundPosition = 'center'; }
+    else if (bg.layer) { bgLayerStyle.background = bg.layer; }
+    else { bgLayerStyle.background = 'transparent'; }
+
+    const defaultPhotoScrim = 'linear-gradient(180deg, rgba(1,21,38,0.15) 0%, rgba(1,21,38,0.35) 45%, rgba(1,21,38,0.9) 100%)';
+    const scrimStyle = { position: 'absolute', inset: 0, background: bg.scrim || (typeof bg.image === 'string' ? defaultPhotoScrim : 'transparent'), pointerEvents: 'none' };
+
+    const eyebrowStyle = { fontSize: eSize + 'px', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: eyebrowColor, marginBottom: Math.round(24 * unit) + 'px' };
+    const headlineStyle = { fontSize: hSize + 'px', lineHeight: 1.02, letterSpacing: '-0.03em', fontWeight: 700, color: fg };
+    const bodyStyle = { marginTop: Math.round(24 * unit) + 'px', fontSize: bSize + 'px', lineHeight: 1.45, color: bodyColor, maxWidth: (align === 'center' ? '100%' : Math.round(dims.w * 0.82) + 'px'), marginLeft: (align === 'center' ? 'auto' : (align === 'right' ? 'auto' : '0')), marginRight: (align === 'right' ? '0' : (align === 'center' ? 'auto' : '')) };
+    if (st.bodyMode === 'bullets' || isStatGrid || isRowList) { bodyStyle.maxWidth = '100%'; }
+    if (isStatGrid || isRowList) { bodyStyle.marginTop = Math.round(32 * unit) + 'px'; }
+
+    const wordmarkStyle = logoCenter
+      ? { position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: vpad + 'px', height: logoH + 'px', width: 'auto', opacity: 0.95, filter: dark ? 'none' : 'invert(1)' }
+      : { position: 'absolute', left: P + 'px', bottom: vpad + 'px', height: logoH + 'px', width: 'auto', opacity: 0.95, filter: dark ? 'none' : 'invert(1)' };
+    const sourceStyle = { position: 'absolute', right: P + 'px', bottom: Math.round(vpad + logoH * 0.22) + 'px', fontSize: fSize + 'px', letterSpacing: '0.04em', color: footerMuted };
+
+    // ================= PICTURE LAYOUTS =================
+    const layout = st.layout;
+    const isSquare = dims.w === dims.h;
+    const gapPx = isSquare ? Math.max(40, Math.round(60 * unit)) : Math.max(72, Math.round(110 * unit));
+    let pictureWrapStyle = { display: 'none' };
+    let pictureScrimStyle = { display: 'none' };
+    const showPinnedFooter = (layout === 'classic');
+    const inBlockFooter = (layout !== 'classic');
+    let ftWordFilter = dark ? 'none' : 'invert(1)';
+    let ftSourceColor = footerMuted;
+
+    if (layout !== 'classic') {
+      bodyStyle.maxWidth = '100%'; bodyStyle.marginLeft = '0'; bodyStyle.marginRight = '0';
+      // text takes priority over the image — only a light trim, never an aggressive shrink
+      const picShrink = layout === 'pictureBehind' ? 0.95 : 0.94;
+      headlineStyle.fontSize = Math.round(hSize * picShrink) + 'px';
+      eyebrowStyle.fontSize = Math.round(eSize * picShrink) + 'px';
+      bodyStyle.fontSize = Math.round(bSize * picShrink) + 'px';
+    }
+    const contentUnits = rawBodyLineCount + (st.eyebrow ? 1 : 0) + (st.cta ? 1 : 0);
+    // wrap-aware line estimate for the first paint; a measured pass (below) then corrects it precisely
+    const bodyRawLines = (st.body || '').split('\n').filter(s => s.trim());
+    const charsPerLine = Math.max(10, (dims.w - 2 * P) / (bSize * 0.56));
+    const bodyBlockH = isStatGrid
+      ? rawBodyLineCount * bSize * 3.7
+      : isRowList
+        ? rows.reduce((sum, r) => sum + bSize * 1.3 + Math.max(1, Math.ceil((r.desc || '').length / charsPerLine)) * bSize * 1.5 + bSize * 0.9, 0)
+        : Math.max(rawBodyLineCount, bodyRawLines.reduce((sum, l) => sum + Math.max(1, Math.ceil(l.length / charsPerLine)), 0)) * bSize * 1.75;
+    const footerFixedGap = Math.round(32 * unit);
+    const measureKey = [layout, st.sizeKey, st.headline, st.eyebrow, st.body, st.cta, st.template, st.bodyMode].join('|');
+    const estTextH = (this.state.measuredKey === measureKey && this.state.measuredH != null)
+      ? Math.round(this.state.measuredH * 1.04)
+      : Math.round((hSize * 1.35 + (st.eyebrow ? eSize * 2.4 : 0) + bodyBlockH + fSize * 3.2 + footerFixedGap + logoH) * 1.12);
+    const tallDocRatio = dims.h / dims.w;
+    const picFracCap = tallDocRatio >= 1.2 ? 0.5 : 0.78;
+    const picFrac = Math.max(0.14, Math.min(picFracCap, (dims.h - estTextH - Math.round(72 * unit)) / dims.h));
+    const picTextVpad = Math.round(72 * unit);
+    if (layout === 'topBottom') {
+      pictureWrapStyle = { position: 'absolute', left: 0, right: 0, top: (100 - picFrac * 100) + '%', bottom: 0, overflow: 'hidden' };
+      contentStyle = { position: 'absolute', left: P + 'px', right: P + 'px', top: 0, bottom: (picFrac * 100) + '%', boxSizing: 'border-box', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: picTextVpad + 'px', paddingBottom: picTextVpad + 'px', overflow: 'hidden' };
+    } else if (layout === 'giantPicture') {
+      const bandTop = Math.round(dims.h * picFrac);
+      pictureWrapStyle = { position: 'absolute', left: 0, right: 0, top: 0, height: bandTop + 'px', overflow: 'hidden' };
+      contentStyle = { position: 'absolute', left: P + 'px', right: P + 'px', top: bandTop + 'px', bottom: 0, boxSizing: 'border-box', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: picTextVpad + 'px', paddingBottom: picTextVpad + 'px', overflow: 'hidden' };
+    } else if (layout === 'pictureBehind') {
+      pictureWrapStyle = { position: 'absolute', inset: 0, overflow: 'hidden' };
+      pictureScrimStyle = { position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(1,21,38,0.35) 0%, rgba(1,21,38,0.55) 50%, rgba(1,21,38,0.82) 100%)', pointerEvents: 'none' };
+      contentStyle = { position: 'absolute', left: P + 'px', right: P + 'px', top: P + 'px', bottom: P + 'px', boxSizing: 'border-box', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden' };
+      eyebrowStyle.color = '#EA4F05';
+      headlineStyle.color = '#FFFFFF';
+      bodyStyle.color = 'rgba(255,255,255,0.85)';
+      bodyStyle.maxWidth = Math.round(dims.w * 0.72) + 'px';
+      ftWordFilter = 'none';
+      ftSourceColor = 'rgba(255,255,255,0.7)';
+    }
+
+    // LinkedIn only: fixed vertical image on the right, content + footer on the left panel
+    let liSplit = false;
+    if (st.sizeKey === 'li' && layout !== 'classic') {
+      liSplit = true;
+      // text takes priority here too — a wider text panel for heavier content, narrower picture panel
+      const liPicFrac = Math.max(0.22, Math.min(0.52, 1 - (Math.round(hSize * 1.35 + (st.eyebrow ? eSize * 2.4 : 0) + bodyBlockH + fSize * 3.2) / dims.w)));
+      const halfW = Math.round(dims.w * liPicFrac);
+      pictureWrapStyle = { position: 'absolute', top: 0, bottom: 0, right: 0, width: halfW + 'px', overflow: 'hidden' };
+      pictureScrimStyle = { display: 'none' };
+      const liShrink = liShrinkValue;
+      contentStyle = { position: 'absolute', left: P + 'px', top: 0, bottom: 0, right: (halfW + P) + 'px', boxSizing: 'border-box', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', paddingTop: Math.round(dims.h * 0.14 * liShrink) + 'px', paddingBottom: Math.round(dims.h * 0.07 * liShrink) + 'px', overflow: 'hidden' };
+      eyebrowStyle.color = eyebrowColor;
+      eyebrowStyle.fontSize = eSize + 'px';
+      eyebrowStyle.marginBottom = Math.round(12 * unit * liShrink) + 'px';
+      headlineStyle.color = fg;
+      headlineStyle.fontSize = hSize + 'px';
+      bodyStyle.color = bodyColor;
+      bodyStyle.fontSize = bSize + 'px';
+      bodyStyle.marginTop = Math.round(14 * unit * liShrink) + 'px';
+      bodyStyle.maxWidth = '100%';
+      bodyStyle.marginLeft = '0';
+      bodyStyle.marginRight = '0';
+      ftWordFilter = dark ? 'none' : 'invert(1)';
+      ftSourceColor = footerMuted;
+    }
+
+    const needsFooterPin = (layout === 'topBottom' || layout === 'giantPicture');
+    const textGroupStyle = needsFooterPin
+      ? { display: 'flex', flexDirection: 'column', minHeight: 0 }
+      : { display: 'flex', flexDirection: 'column', transform: 'translateY(-' + Math.round(20 * unit) + 'px)' };
+    const blockFooterRowStyle = { display: 'flex', alignItems: 'flex-end', justifyContent: logoCenter ? 'center' : 'space-between', gap: Math.round(20 * unit) + 'px', flex: '0 0 auto', marginTop: (liSplit ? Math.round(16 * unit) + 'px' : (layout === 'pictureBehind' ? gapPx + 'px' : (needsFooterPin ? footerFixedGap + 'px' : '0'))) };
+    const blockWordmarkStyle = { height: logoH + 'px', width: 'auto', opacity: 0.95, filter: ftWordFilter };
+    const blockSourceStyle = { fontSize: fSize + 'px', letterSpacing: '0.04em', color: ftSourceColor, whiteSpace: 'nowrap' };
+
+    // control styles
+    const sizeChip = (key, label) => {
+      const on = st.sizeKey === key;
+      return {
+        cursor: 'pointer', fontSize: '12px', fontWeight: on ? 600 : 400,
+        color: on ? '#fff' : 'rgba(26,13,5,0.7)', background: on ? '#011526' : 'transparent',
+        padding: '8px 12px', border: on ? '1px solid #011526' : '1px solid rgba(0,0,0,0.14)',
+      };
+    };
+    const sizes = [ ['ig','Instagram'],['story','Stories'],['li','LinkedIn'],['a4','A4'],['a3','A3'],['letter','Letter'],['a5','A5'] ]
+      .map(([k,l]) => ({ label: l, style: sizeChip(k,l), pick: () => this.setState({ sizeKey: k }, this._measure) }));
+
+    const backgrounds = Object.keys(bgDefs).map(k => {
+      const d = bgDefs[k]; const on = st.bgKey === k;
+      return { name: d.name, pick: () => this.setState({ bgKey: k }),
+        swatchStyle: { cursor: 'pointer', aspectRatio: '1', background: d.swatch, border: '1px solid rgba(0,0,0,0.16)', outline: on ? '2px solid #EA4F05' : 'none', outlineOffset: '-1px' } };
+    });
+
+    const photoTextures = Object.keys(texDefs).map(k => {
+      const d = texDefs[k]; const on = st.bgKey === k;
+      return { name: d.name, pick: () => this.setState({ bgKey: k }),
+        swatchStyle: { cursor: 'pointer', aspectRatio: '1', background: d.swatch, border: '1px solid rgba(0,0,0,0.16)', outline: on ? '2px solid #EA4F05' : 'none', outlineOffset: '-1px' } };
+    });
+
+    const anchorDot = (pos) => {
+      const base = { position: 'absolute', width: '8px', height: '8px', background: (st.anchor === pos) ? '#EA4F05' : 'rgba(26,13,5,0.4)' };
+      if (pos === 'tl') { base.left = '7px'; base.top = '7px'; }
+      if (pos === 'tr') { base.right = '7px'; base.top = '7px'; }
+      if (pos === 'c') { base.left = '50%'; base.top = '50%'; base.transform = 'translate(-50%,-50%)'; }
+      if (pos === 'bl') { base.left = '7px'; base.bottom = '7px'; }
+      return base;
+    };
+    const anchorBox = (pos) => ({ cursor: 'pointer', position: 'relative', height: '40px', border: (st.anchor === pos) ? '1px solid #EA4F05' : '1px solid rgba(0,0,0,0.14)', background: (st.anchor === pos) ? 'rgba(234,79,5,0.07)' : 'transparent' });
+    const anchors = [ 'tl','tr','c','bl' ].map(p => ({ style: anchorBox(p), dotStyle: anchorDot(p), pick: () => this.setState({ anchor: p }) }));
+
+    const layoutChip = (k) => ({ cursor: 'pointer', fontSize: '12px', fontWeight: st.layout === k ? 600 : 400, color: st.layout === k ? '#fff' : 'rgba(26,13,5,0.7)', background: st.layout === k ? '#011526' : 'transparent', padding: '9px 12px', border: st.layout === k ? '1px solid #011526' : '1px solid rgba(0,0,0,0.14)' });
+    const layouts = [ ['classic','Text only'],['topBottom','Top / bottom split'],['giantPicture','Giant picture, bottom words'],['pictureBehind','Picture behind everything'] ]
+      .map(([k,l]) => ({ label: l, style: layoutChip(k), pick: () => this.setState({ layout: k }) }));
+
+    const tab = (on) => ({ cursor: 'pointer', flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: on ? 600 : 400, color: on ? '#fff' : 'rgba(26,13,5,0.65)', background: on ? '#011526' : 'transparent', padding: '9px 0' });
+    const seg = (on) => ({ cursor: 'pointer', flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: on ? 600 : 400, color: on ? '#fff' : 'rgba(26,13,5,0.65)', background: on ? '#011526' : 'transparent', padding: '9px 0' });
+
+    return {
+      sizes, backgrounds, photoTextures, anchors, layouts,
+      pictureWrapStyle, pictureScrimStyle, showPinnedFooter, inBlockFooter,
+      blockFooterRowStyle, blockWordmarkStyle, blockSourceStyle, textGroupStyle,
+      measureWrapStyle: { display: 'flex', flexDirection: 'column', width: '100%' }, measureBlockRef: this.measureBlockRef,
+      bodyNode, ctaStyle, cta: st.cta, footerSourceShown,
+      bgName: bg.name,
+      dimLabel: dims.w + ' × ' + dims.h + ' px',
+      zoomLabel: Math.round(st.scale * 100) + '%',
+      eyebrow: st.eyebrow, headline: st.headline, accentWord: st.accentWord, body: st.body, source: st.source,
+      headlineNode,
+      simpleTabStyle: tab(st.template === 'simple'),
+      denseTabStyle: tab(st.template === 'dense'),
+      pickSimple: () => this.setState({ template: 'simple' }),
+      pickDense: () => this.setState({ template: 'dense' }),
+      paraTabStyle: seg(st.bodyMode === 'para'),
+      bulletsTabStyle: seg(st.bodyMode === 'bullets'),
+      pickPara: () => this.setState({ bodyMode: 'para' }),
+      pickBullets: () => this.setState({ bodyMode: 'bullets' }),
+      logoLeftStyle: seg(st.logoPos === 'left'),
+      logoCenterStyle: seg(st.logoPos === 'center'),
+      pickLogoLeft: () => this.setState({ logoPos: 'left' }),
+      pickLogoCenter: () => this.setState({ logoPos: 'center' }),
+      onEyebrow: (e) => this.setState({ eyebrow: e.target.value }),
+      onHeadline: (e) => this.setState({ headline: e.target.value }),
+      onAccent: (e) => this.setState({ accentWord: e.target.value }),
+      onBody: (e) => this.setState({ body: e.target.value }),
+      onCta: (e) => this.setState({ cta: e.target.value }),
+      ctaFillStyle: seg(st.ctaMode === 'fill'),
+      ctaOutlineStyle: seg(st.ctaMode === 'outline'),
+      pickCtaFill: () => this.setState({ ctaMode: 'fill' }),
+      pickCtaOutline: () => this.setState({ ctaMode: 'outline' }),
+      onSource: (e) => this.setState({ source: e.target.value }),
+      onExport: () => this._exportPNG(),
+      onGenerate: () => this._generateBg(),
+      aiTopic: st.aiTopic,
+      aiBusy: st.aiBusy,
+      aiLabel: st.aiBusy ? 'Drafting…' : 'Draft copy',
+      onAiTopic: (e) => this.setState({ aiTopic: e.target.value }),
+      onDraft: () => this._draftCopy(),
+      stageRef: this.stageRef,
+      canvasRef: this.canvasRef,
+      canvasStyle, canvasWrapStyle, bgLayerStyle, scrimStyle,
+      contentStyle, eyebrowStyle, headlineStyle, bodyStyle, wordmarkStyle, sourceStyle,
+    };
+  }
+}
+</script>
+</body>
+</html>

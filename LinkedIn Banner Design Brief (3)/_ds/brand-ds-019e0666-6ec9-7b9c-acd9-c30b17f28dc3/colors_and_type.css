@@ -1,0 +1,246 @@
+/* =====================================================================
+   Keenai Design System — Colors & Type Tokens
+   "From complexity to clarity." — Sage-Architect.
+   ===================================================================== */
+
+/* ----- Fonts ---------------------------------------------------------- */
+/* Inter is the sole brand typeface as of May 2026 — Instrument Serif was
+   removed from the display tier. Display headlines now use Inter at weight
+   500 with the same tracking and sizes as before, so existing usages of
+   `var(--font-display)` continue to work; the variable is retained as a
+   semantic alias for "display tier" rather than a distinct family.
+
+   Inter is loaded from Google Fonts CDN. The user-supplied Inter-4.1.zip
+   didn't arrive in uploads/ — flagged in README. Once provided, replace
+   the @import below with @font-face local references. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* ----- Color Tokens --------------------------------------------------- */
+:root {
+  /* ---- Brand primary (Brand Book) ---- */
+  --keenai-auric-ember:  #EA4F05;   /* primary brand orange */
+  --keenai-black:        #000000;
+  --keenai-white:        #FFFFFF;
+  --keenai-grey:         #F5F5F5;   /* light surface */
+
+  /* ---- Extended working palette ---- */
+  --keenai-deep-crimson: #B72A06;   /* warm dark accent */
+  --keenai-deep-navy:    #011526;   /* premium dark base */
+  --keenai-burgundy:     #430D17;   /* depth layer */
+  --keenai-warm-white:   #FFFBF9;   /* warm light base */
+
+  /* ---- Semantic — light surfaces ---- */
+  --bg:           var(--keenai-warm-white);
+  --bg-alt:       var(--keenai-grey);
+  --surface:      var(--keenai-white);
+  --fg:           var(--keenai-black);
+  --fg-muted:     rgba(0, 0, 0, 0.60);
+  --fg-subtle:    rgba(0, 0, 0, 0.40);
+  --border:       rgba(0, 0, 0, 0.10);
+  --border-strong:rgba(0, 0, 0, 0.20);
+  --accent:           var(--keenai-auric-ember);
+  --accent-hover:     var(--keenai-deep-crimson);
+  --accent-on-light:  var(--keenai-deep-crimson); /* WCAG AA: ember 3.64:1 on warm white — use crimson 6.13:1 for small text */
+  --accent-fg:        var(--keenai-deep-navy);    /* WCAG AA: navy 4.99:1 on ember — use as text/icon color on accent bg */
+
+  /* ---- Semantic — dark surfaces (premium digital) ---- */
+  --bg-dark:           var(--keenai-deep-navy);
+  --bg-dark-alt:       var(--keenai-burgundy);
+  --surface-dark:      #051f33;          /* +1 elevation on navy */
+  --fg-on-dark:        var(--keenai-white);
+  --fg-on-dark-warm:   var(--keenai-warm-white);
+  --fg-on-dark-muted:  rgba(255, 255, 255, 0.60);
+  --fg-on-dark-subtle: rgba(255, 255, 255, 0.40);
+  --border-on-dark:    rgba(255, 255, 255, 0.10);
+  --border-on-dark-strong: rgba(255, 255, 255, 0.20);
+
+  /* ---- Spacing — strict 8pt grid ---- */
+  --space-1: 4px;   /* half-unit; use sparingly */
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* ---- Radii — sharp corners only ---- */
+  --radius-0: 0px;        /* default for ALL containers, cards, UI */
+  --radius-pill: 999px;   /* reserved: app icon container, status pips */
+
+  /* ---- Type families ----
+     One family only. `--font-display` is kept as a semantic alias for the
+     display tier; its stack is identical to `--font-ui`. */
+  --font-ui:      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                  Roboto, Helvetica, Arial, sans-serif;
+  --font-display: var(--font-ui);
+  --font-mono:    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Tabular + disambiguation features for all financial data */
+  --feat-data: "ss02", "tnum", "lnum", "cv11"; /* @kind other */
+}
+
+/* ----- Base type ------------------------------------------------------ */
+html {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  color: var(--fg);
+}
+
+/* ----- Display (Inter, weight 500, tight tracking) -------------------- */
+.k-h1, h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--fg);
+  margin: 0;
+}
+
+.k-h2, h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  margin: 0;
+}
+
+.k-pullquote, blockquote {
+  font-family: var(--font-display);
+  font-style: normal;        /* italic-for-empathy rule retired with Instrument Serif */
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin: 0;
+}
+
+/* ----- Sub-headers (Inter) ------------------------------------------- */
+.k-h3, h3 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.20;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+}
+
+.k-h4, h4 {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.20;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+}
+
+/* ----- Body (Inter Std) ---------------------------------------------- */
+.k-body, p {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.50;
+  letter-spacing: -0.011em;
+  max-width: 65ch;
+  color: var(--fg);
+  margin: 0;
+}
+
+.k-body-lg {
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.011em;
+}
+
+/* ----- Micro-UI (Inter, 12–14px) ------------------------------------- */
+.k-micro {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.0;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+}
+.k-caption {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.30;
+  letter-spacing: 0.01em;
+  color: var(--fg-muted);
+}
+
+/* ----- Labels (small, often uppercase) ------------------------------- */
+.k-label {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* ----- CTAs & Buttons ------------------------------------------------- */
+.k-cta {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.0;
+  letter-spacing: 0.04em;       /* +0.04em per spec */
+  text-transform: uppercase;    /* All Caps per spec */
+  color: var(--fg);
+}
+
+/* ----- Financial / data text ----------------------------------------- */
+.k-data,
+[data-numeric],
+.k-data * {
+  font-family: var(--font-ui);
+  font-feature-settings: "ss02", "tnum", "lnum", "cv11";
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.005em;
+}
+
+.k-data-lg {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  font-feature-settings: "ss02", "tnum", "lnum";
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ----- Utilities ------------------------------------------------------ */
+.k-on-dark { color: var(--fg-on-dark); }
+.k-on-dark-muted { color: var(--fg-on-dark-muted); }
+.k-mono { font-family: var(--font-mono); font-feature-settings: "ss02", "tnum"; }
+.k-italic { font-style: italic; }
+
+/* No rounded corners — strict spec */
+.k-card,
+.k-button,
+.k-input,
+.k-tag {
+  border-radius: 0;
+}
